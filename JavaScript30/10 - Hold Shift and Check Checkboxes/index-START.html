@@ -100,19 +100,28 @@
 
 <script>
 const checkboxItems = document.querySelectorAll("input[type='checkbox']");
-let previousInput;
+let lastChecked;
 
 function checkInputs(e) {
-  console.log(e.shiftKey)
-  if (e.shiftKey) {
-    // checkboxItems.forEach()
-    console.log(5);
+  let isBetween = false;
+
+  if (e.shiftKey && this.checked) {
+    checkboxItems.forEach((item) => {
+      if (item === this || item === lastChecked) {
+        isBetween = !isBetween;
+      }
+
+      if (isBetween) {
+        item.checked = true;
+      }
+    })
   }
+
+  lastChecked = this;
 }
 
-checkboxItems.forEach(function(item) {
-  item.addEventListener('click', checkInputs);
-})
+checkboxItems.forEach((item) => item.addEventListener('click', checkInputs));
+
 </script>
 </body>
 </html>
