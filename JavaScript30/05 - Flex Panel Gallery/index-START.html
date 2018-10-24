@@ -90,7 +90,7 @@
       font-size: 4em;
     }
 
-    .panel.open {
+    .panel.open-panel {
       font-size:40px;
     }
 
@@ -126,8 +126,19 @@
   </div>
 
   <script>
+  const panels = document.querySelectorAll('.panel');
 
+  function openPanel() {
+    if (this.classList.contains('open-panel')) {
+      this.classList.remove('open-panel');
+    }
+    else {
+      panels.forEach(panel => panel.classList.remove('open-panel'));
+      this.classList.add('open-panel');
+    }
+  }
 
+  panels.forEach(panel => panel.addEventListener('click', openPanel));
   </script>
 
 
