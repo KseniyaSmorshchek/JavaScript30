@@ -21,21 +21,25 @@ function setDurationProgress() {
 }
 
 function setRange() {
-  const rangeName = this.name;
   video[this.name] = this.value;
 }
 
 function skipVideo() {
-  console.log(video.currentTime, Number(this.dataset.skip));
   video.currentTime += Number(this.dataset.skip);
+}
+
+function scrub(e) {
+  video.currentTime = e.offsetX / progress.offsetWidth * video.duration;
 }
 
 video.addEventListener('click', toggleVideo);
 toggle.addEventListener('click', toggleVideo);
 video.addEventListener('timeupdate', setDurationProgress);
+progress.addEventListener('click', scrub);
 
 ranges.forEach(range => {
   range.addEventListener('change', setRange);
+  range.addEventListener('mousemove', setRange);
 })
 
 skipButtons.forEach(button => {
