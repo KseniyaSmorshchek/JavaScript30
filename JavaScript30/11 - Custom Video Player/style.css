@@ -54,6 +54,20 @@ body {
   max-width:50px;
 }
 
+.player__button .pause-icon {
+  display: none;
+}
+.player__button .play-icon {
+  display: inline;
+}
+
+.player__button.paused .pause-icon {
+  display: inline;
+}
+.player__button.paused .play-icon {
+  display: none;
+}
+
 .player__button:focus {
   border-color: #ffc600;
 }
@@ -98,10 +112,9 @@ body {
 }
 
 .progress__filled {
-  width:50%;
   background:#ffc600;
   flex:0;
-  flex-basis:50%;
+  flex-basis:0%;
 }
 
 /* unholy css to style input type="range" */
